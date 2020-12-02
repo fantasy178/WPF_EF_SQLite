@@ -24,9 +24,15 @@ namespace WPF_EF_SQLite
         {
             InitializeComponent();
 
-            using(var db = new MyDbContext("Axes.db"))
+            using(var db = new MyDbContext("Axes1.db"))
             {
                 db.Axes.Add(new Axis() { Id = 0, Name = "X1", Position = 1.0 });
+                db.SaveChanges();
+            }
+
+            using (var db = new MyDbContext("Axes2.db"))
+            {
+                db.Axes.Add(new Axis() { Id = 0, Name = "B1", Position = 1.0 });
                 db.SaveChanges();
             }
         }
